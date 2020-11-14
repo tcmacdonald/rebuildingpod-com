@@ -1,11 +1,8 @@
 {
-  "name": "gatsby-contentful-starter",
-  "description": "Starter Contentful Gatsby Blog",
+  "name": "rebuildingpod-com",
+  "description": "Rebuilding Podcast",
   "version": "1.0.0",
-  "author": "Stefan Judis <stefanjudis@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/contentful-userland/gatsby-contentful-starter/issues"
-  },
+  "author": "Taylor C. MacDonald <tcmacdonald@gmail.com>",
   "dependencies": {
     "cross-env": "^7.0.2",
     "gatsby-image": "^2.3.4",
@@ -37,16 +34,10 @@
   "engines": {
     "node": ">=10.13.0"
   },
-  "homepage": "https://github.com/contentful-userland/gatsby-contentful-starter#readme",
-  "keywords": [
-    "gatsby",
-    "contentful"
-  ],
-  "license": "MIT",
-  "main": "n/a",
+  "homepage": "https://www.rebuildingpod.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/contentful-userland/gatsby-contentful-starter.git"
+    "url": "git+https://github.com/tcmacdonald/rebuildingpod-com"
   },
   "scripts": {
     "dev": "npm run develop",
