@@ -4,6 +4,7 @@ import get from 'lodash/get'
 import { Helmet } from 'react-helmet'
 import styles from './blog.module.css'
 import Layout from '../components/layout'
+import Footer from '../components/footer'
 import ArticlePreview from '../components/article-preview'
 
 class BlogIndex extends React.Component {
@@ -27,6 +28,7 @@ class BlogIndex extends React.Component {
                 )
               })}
             </ul>
+            <Footer />
           </div>
         </div>
       </Layout>

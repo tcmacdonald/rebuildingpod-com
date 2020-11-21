@@ -1,0 +1,32 @@
+.wrapper {
+  flex-basis: 50%;
+  flex-grow: 0;
+  display: flex;
+  vertical-align: middle;
+  padding-bottom: 2rem;
+}
+
+.personImage {
+  min-width: 100px;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  img {
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+  }
+}
+
+h2 {
+  font-size: 140%;
+  margin: 0;
+  padding: 0;
+}
+
+.details {
+  padding-left: 1rem;
+}

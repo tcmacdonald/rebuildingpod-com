@@ -1,0 +1,6 @@
+.peopleWrapper {
+  display: flex;
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+  }
+}
