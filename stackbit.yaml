@@ -1,0 +1,51 @@
+stackbitVersion: ~0.3.0
+ssgName: gatsby
+ssgVersion: 2.3.30
+buildCommand: npm run build
+publishDir: public
+staticDir: static
+uploadDir: images
+dataDir: src/data
+pagesDir: src/pages
+metadata: 
+  title: My Site Title
+  description: Description of the site
+  author: Stackbit
+  authorURL: 'https://www.stackbit.com'
+  images:
+    small: images/demo-256x192.png
+    large: images/demo-1024x768.png
+models:
+  blogPost:
+    type: object
+    label: "Blog Post"
+    fields:
+      - type: string
+        name: title
+        label: Title
+        required: true
+      - type: string
+        name: slug
+        label: Slug
+        required: true  
+      - type: markdown
+        name: body
+        label: Body
+      - type: reference
+        name: author
+        label: Author
+        models:
+          - person
+  person:
+    type: object
+    label: "Person"
+    fields:
+      - type: string
+        name: name
+        label: Name
+        required: true
+      - type: string
+        name: slug
+        label: Slug
+        required: true
+      
