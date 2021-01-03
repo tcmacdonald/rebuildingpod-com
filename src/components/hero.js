@@ -14,6 +14,13 @@ export default class Hero extends Component {
                 title
               }
             }
+            logo: file(relativePath: { eq: "images/logo.png" }) {
+              childImageSharp {
+                fixed(width: 150) {
+                  ...GatsbyImageSharpFixed_tracedSVG
+                }
+              }
+            }
             heroImage: file(
               relativePath: {
                 eq: "images/cincinnati-in-1812-2000-population-ohio-3.jpg"
@@ -32,12 +39,26 @@ export default class Hero extends Component {
             <Img
               className={styles.heroImage}
               alt={staticData.name}
-              fluid={this.props.post ? this.props.post.heroImage.fluid : staticData.heroImage.childImageSharp.fluid}
+              fluid={
+                this.props.post
+                  ? this.props.post.heroImage.fluid
+                  : staticData.heroImage.childImageSharp.fluid
+              }
             />
             <div className={styles.heroDetails}>
-              <h3 className={styles.heroHeadline}>
-                <Link to="/">{staticData.site.siteMetadata.title}</Link>
-              </h3>
+              <Link to="/">
+                <Img
+                  fixed={staticData.logo.childImageSharp.fixed}
+                  objectFit="cover"
+                  objectPosition="50% 50%"
+                  alt=""
+                />
+              </Link>
+              <h1 className={styles.h1}>
+                <Link to="/">
+                  Rebuilding <span>Podcast</span> w/ Missy &amp; Crimson
+                </Link>
+              </h1>
             </div>
           </div>
         )}
