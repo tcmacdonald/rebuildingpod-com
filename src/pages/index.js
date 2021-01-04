@@ -28,24 +28,15 @@ class RootIndex extends React.Component {
           <Helmet title={siteTitle} />
           <Hero />
           <div className={styles.cols}>
-            <div>
-              <div>
-                <h2 className="section-headline">
-                  {this.props.data.aboutBlock.title}
-                </h2>
-                {documentToReactComponents(
-                  this.props.data.aboutBlock.markdown.json
-                )}
-              </div>
-              <br />
-              <div>
-                <h2 className="section-headline">Hosts</h2>
-                <div className={styles.peopleWrapper}>
-                  {this.people(people)}
-                </div>
-              </div>
-            </div>
-            <div>
+            <section>
+              <h2 className="section-headline">
+                {this.props.data.aboutBlock.title}
+              </h2>
+              {documentToReactComponents(
+                this.props.data.aboutBlock.markdown.json
+              )}
+            </section>
+            <section>
               <h2 className="section-headline">Recent posts</h2>
               <ul className="article-list">
                 {posts.map(({ node }) => {
@@ -56,9 +47,11 @@ class RootIndex extends React.Component {
                   )
                 })}
               </ul>
-              <br />
-              <br />
-            </div>
+            </section>
+            <section>
+              <h2 className="section-headline">Hosts</h2>
+              <div className={styles.peopleWrapper}>{this.people(people)}</div>
+            </section>
           </div>
           <Footer />
         </div>
