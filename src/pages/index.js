@@ -9,6 +9,7 @@ import Footer from '../components/footer'
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
 import styles from './index.module.scss'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 class RootIndex extends React.Component {
   people(people) {
@@ -28,14 +29,21 @@ class RootIndex extends React.Component {
           <Hero />
           <div className={styles.cols}>
             <div>
-              <h2 className="section-headline">About Us</h2>
-              <p>
-                Rebuilding is a topical podcast focused on Kentucky politics and
-                maintaining sanity amid COVID-19.
-              </p>
+              <div>
+                <h2 className="section-headline">
+                  {this.props.data.aboutBlock.title}
+                </h2>
+                {documentToReactComponents(
+                  this.props.data.aboutBlock.markdown.json
+                )}
+              </div>
               <br />
-              <h2 className="section-headline">Hosts</h2>
-              <div className={styles.peopleWrapper}>{this.people(people)}</div>
+              <div>
+                <h2 className="section-headline">Hosts</h2>
+                <div className={styles.peopleWrapper}>
+                  {this.people(people)}
+                </div>
+              </div>
             </div>
             <div>
               <h2 className="section-headline">Recent posts</h2>
@@ -48,6 +56,8 @@ class RootIndex extends React.Component {
                   )
                 })}
               </ul>
+              <br />
+              <br />
             </div>
           </div>
           <Footer />
@@ -64,6 +74,12 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    aboutBlock: contentfulContentBlock(slug: { eq: "about-us" }) {
+      title
+      markdown: childContentfulContentBlockBodyRichTextNode {
+        json
       }
     }
     allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
