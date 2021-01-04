@@ -32,7 +32,7 @@ class BlogPostTemplate extends React.Component {
                 __html: post.body.childMarkdownRemark.html,
               }}
             />
-            <div style={{ marginTop: '2rem' }}>
+            <div style={{ marginTop: '3em' }}>
               <h2 className="section-headline">Author</h2>
               <Person {...post.author} />
             </div>

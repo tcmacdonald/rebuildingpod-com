@@ -1,6 +1,21 @@
-.peopleWrapper {
-  display: flex;
-  @media screen and (max-width: 900px) {
-    flex-direction: column;
+.cols {
+  padding: 2em;
+
+  @media screen and (min-width: 900px) {
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+
+    > div:nth-child(1) {
+      width: 40%;
+      order: 2;
+    }
+
+    > div:nth-child(2) {
+      width: 60%;
+      order: 1;
+      margin-right: 2em;
+    }
   }
 }

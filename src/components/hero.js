@@ -16,7 +16,7 @@ export default class Hero extends Component {
             }
             logo: file(relativePath: { eq: "images/logo-gray.png" }) {
               childImageSharp {
-                fixed(width: 200) {
+                fixed(width: 150) {
                   ...GatsbyImageSharpFixed_tracedSVG
                 }
               }
