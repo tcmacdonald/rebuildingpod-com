@@ -14,9 +14,9 @@ export default class Hero extends Component {
                 title
               }
             }
-            logo: file(relativePath: { eq: "images/logo.png" }) {
+            logo: file(relativePath: { eq: "images/logo-gray.png" }) {
               childImageSharp {
-                fixed(width: 150) {
+                fixed(width: 200) {
                   ...GatsbyImageSharpFixed_tracedSVG
                 }
               }
@@ -55,9 +55,7 @@ export default class Hero extends Component {
                 />
               </Link>
               <h1 className={styles.h1}>
-                <Link to="/">
-                  Rebuilding <span>Podcast</span> w/ Missy &amp; Crimson
-                </Link>
+                <Link to="/">Rebuilding Podcast w/ Missy &amp; Crimson</Link>
               </h1>
             </div>
           </div>
