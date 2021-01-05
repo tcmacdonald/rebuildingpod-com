@@ -39,11 +39,7 @@ export default class Hero extends Component {
             <Img
               className={styles.heroImage}
               alt={staticData.name}
-              fluid={
-                this.props.post
-                  ? this.props.post.heroImage.fluid
-                  : staticData.heroImage.childImageSharp.fluid
-              }
+              fluid={staticData.heroImage.childImageSharp.fluid}
             />
             <div className={styles.heroDetails}>
               <Link to="/">

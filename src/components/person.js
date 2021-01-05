@@ -12,11 +12,13 @@ export default class Person extends Component {
         </div>
         <div className={styles.details}>
           <h2>{this.props.name}</h2>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: this.props.shortBio.childMarkdownRemark.html,
-            }}
-          ></div>
+          {this.props.showBio && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: this.props.shortBio.childMarkdownRemark.html,
+              }}
+            ></div>
+          )}
           {this.props.socialAccounts &&
             this.props.socialAccounts.map((node) => (
               <SocialIcon

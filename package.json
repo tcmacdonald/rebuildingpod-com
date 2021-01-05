@@ -17,6 +17,7 @@
     "node-sass": "^4.1.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-grid-system": "^7.1.1",
     "react-helmet": "^6.0.0",
     "react-social-icons": "^4.1.0",
     "sharp": "^0.25.2"
@@ -45,7 +46,7 @@
   },
   "scripts": {
     "dev": "npm run develop",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop --host=0.0.0.0",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md' 'bin/*.js'",

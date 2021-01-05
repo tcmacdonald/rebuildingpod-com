@@ -10,12 +10,22 @@ import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
 import styles from './index.module.scss'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { Container, Row, Col, Visible, Hidden } from 'react-grid-system'
 
 class RootIndex extends React.Component {
   people(people) {
     return people
       .map((edge) => edge.node)
-      .map((node, i) => <Person key={`person${i}`} {...node} />)
+      .map((node, i) => <Person key={`person${i}`} showBio={true} {...node} />)
+  }
+
+  aboutUs() {
+    return (
+      <section class="well">
+        <h2 className="section-headline">{this.props.data.aboutBlock.title}</h2>
+        {documentToReactComponents(this.props.data.aboutBlock.markdown.json)}
+      </section>
+    )
   }
 
   render() {
@@ -24,37 +34,41 @@ class RootIndex extends React.Component {
     const people = get(this, 'props.data.allContentfulPerson.edges')
     return (
       <Layout location={this.props.location}>
-        <div style={{ background: '#fff' }}>
-          <Helmet title={siteTitle} />
-          <Hero />
-          <div className={styles.cols}>
-            <section>
-              <h2 className="section-headline">
-                {this.props.data.aboutBlock.title}
-              </h2>
-              {documentToReactComponents(
-                this.props.data.aboutBlock.markdown.json
-              )}
-            </section>
-            <section>
-              <h2 className="section-headline">Recent posts</h2>
-              <ul className="article-list">
-                {posts.map(({ node }) => {
-                  return (
-                    <li key={node.slug}>
-                      <ArticlePreview article={node} />
-                    </li>
-                  )
-                })}
-              </ul>
-            </section>
-            <section>
-              <h2 className="section-headline">Hosts</h2>
-              <div className={styles.peopleWrapper}>{this.people(people)}</div>
-            </section>
-          </div>
-          <Footer />
+        <Helmet title={siteTitle} />
+        <Hero />
+        <div className="wrapper">
+          <Container>
+            <Row gutterWidth={30}>
+              <Col sm={7}>
+                <Visible xs sm>
+                  {this.aboutUs()}
+                </Visible>
+                <ul className={[styles.articleList, 'article-list'].join(' ')}>
+                  {posts.map(({ node }) => {
+                    return (
+                      <li key={node.slug}>
+                        <ArticlePreview article={node} />
+                      </li>
+                    )
+                  })}
+                </ul>
+              </Col>
+              <Col sm={5}>
+                <Hidden xs sm>
+                  {this.aboutUs()}
+                </Hidden>
+                <section>
+                  <h2 className="section-headline">Hosts</h2>
+                  <div className={styles.peopleWrapper}>
+                    {this.people(people)}
+                  </div>
+                </section>
+              </Col>
+            </Row>
+          </Container>
         </div>
+
+        <Footer />
       </Layout>
     )
   }
@@ -83,8 +97,8 @@ export const pageQuery = graphql`
           publishDate(formatString: "MMMM Do, YYYY")
           tags
           heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_tracedSVG
+            fluid(maxWidth: 700) {
+              ...GatsbyContentfulFluid
             }
           }
           description {

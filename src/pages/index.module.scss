@@ -1,34 +1,7 @@
 .cols {
   padding: 1em;
+}
 
-  @media screen and (min-width: 900px) {
-    padding: 2em 2%;
-    display: -ms-flex;
-    display: -webkit-flex;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    height: 100vh;
-
-    > section:nth-child(1),
-    > section:nth-child(3) {
-      flex: 0 0;
-      width: 40%;
-    }
-
-    > section:nth-child(2) {
-      flex: 0 0 100%;
-      width: 58%;
-      order: 1;
-      margin-right: 2%;
-    }
-
-    > section:nth-child(1) {
-      order: 2;
-    }
-
-    > section:nth-child(3) {
-      order: 3;
-    }
-  }
+.articleList {
+  margin-bottom: 3em;
 }
