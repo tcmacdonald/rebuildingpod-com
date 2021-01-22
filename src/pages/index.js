@@ -40,10 +40,25 @@ class RootIndex extends React.Component {
           <Container>
             <Row gutterWidth={30}>
               <Col sm={7}>
+                <iframe
+                  allow="autoplay *; encrypted-media *; fullscreen *"
+                  frameborder="0"
+                  height="450"
+                  style={{
+                    width: '100%',
+                    maxWidth: '660px',
+                    overflow: 'hidden',
+                    background: 'transparent',
+                    marginBottom: '2rem',
+                  }}
+                  sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                  src="https://embed.podcasts.apple.com/us/podcast/rebuilding-pod/id1550206876"
+                ></iframe>
+
                 <Visible xs sm>
                   {this.aboutUs()}
                 </Visible>
-                <ul className={[styles.articleList, 'article-list'].join(' ')}>
+                <ul className={[styles.articleList].join(' ')}>
                   {posts.map(({ node }) => {
                     return (
                       <li key={node.slug}>

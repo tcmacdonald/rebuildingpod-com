@@ -13,6 +13,7 @@ import { Container, Row, Col, Visible, Hidden } from 'react-grid-system'
 
 class BlogPostTemplate extends React.Component {
   author(post) {
+    console.log(post)
     return (
       <div>
         <h2 className="section-headline">Author</h2>

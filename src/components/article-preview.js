@@ -6,7 +6,13 @@ import styles from './article-preview.module.css'
 
 export default ({ article }) => (
   <div className={styles.preview}>
-    <Link to={`/blog/${article.slug}`}><Img alt="" fluid={article.heroImage.fluid} /></Link>
+    <Link to={`/blog/${article.slug}`}>
+      <Img
+        alt=""
+        className={styles.previewImage}
+        fluid={article.heroImage.fluid}
+      />
+    </Link>
     <h3 className={styles.previewTitle}>
       <Link to={`/blog/${article.slug}`}>{article.title}</Link>
     </h3>
@@ -17,10 +23,11 @@ export default ({ article }) => (
       }}
     />
     {article.tags &&
-      article.tags.map(tag => (
+      article.tags.map((tag) => (
         <p className={styles.tag} key={tag}>
           {tag}
         </p>
       ))}
+    <br />
   </div>
 )
