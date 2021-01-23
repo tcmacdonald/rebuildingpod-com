@@ -21,7 +21,7 @@ class RootIndex extends React.Component {
 
   aboutUs() {
     return (
-      <section class="well">
+      <section>
         <h2 className="section-headline">{this.props.data.aboutBlock.title}</h2>
         {documentToReactComponents(this.props.data.aboutBlock.markdown.json)}
       </section>
@@ -42,7 +42,7 @@ class RootIndex extends React.Component {
               <Col sm={7}>
                 <iframe
                   allow="autoplay *; encrypted-media *; fullscreen *"
-                  frameborder="0"
+                  frameBorder="0"
                   height="450"
                   style={{
                     width: '100%',
@@ -61,8 +61,8 @@ class RootIndex extends React.Component {
                 <ul className={[styles.articleList].join(' ')}>
                   {posts.map(({ node }) => {
                     return (
-                      <li key={node.slug}>
-                        <ArticlePreview article={node} />
+                      <li key={`li-${node.slug}`}>
+                        <ArticlePreview article={node} key={node.slug} />
                       </li>
                     )
                   })}

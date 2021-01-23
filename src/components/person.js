@@ -20,8 +20,9 @@ export default class Person extends Component {
             ></div>
           )}
           {this.props.socialAccounts &&
-            this.props.socialAccounts.map((node) => (
+            this.props.socialAccounts.map((node, i) => (
               <SocialIcon
+                key={`social${i}`}
                 url={node.content}
                 style={{ height: 25, width: 25, marginRight: 8 }}
               />

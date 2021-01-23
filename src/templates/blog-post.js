@@ -37,7 +37,10 @@ class BlogPostTemplate extends React.Component {
             <Row>
               <Col sm={4}>
                 <p>
-                  <Img fluid={post.heroImage.fluid} />
+                  <Img
+                    fluid={post.heroImage.fluid}
+                    style={{ borderRadius: '0.75rem' }}
+                  />
                 </p>
               </Col>
               <Col>
