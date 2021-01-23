@@ -23,13 +23,13 @@ class BlogPostTemplate extends React.Component {
 
   render() {
     const post = get(this.props, 'data.contentfulBlogPost')
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
 
     return (
       <Layout location={this.props.location}>
         <SEO
-          title={`${post.title} | ${siteTitle}`}
+          title={post.title}
           image={post.ogImage.fixed.src}
+          description={post.description.childMarkdownRemark.excerpt}
         />
         <Hero post={post} />
         <div className="wrapper">
@@ -92,6 +92,7 @@ export const pageQuery = graphql`
       description {
         childMarkdownRemark {
           html
+          excerpt
         }
       }
       body {
