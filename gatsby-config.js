@@ -46,5 +46,11 @@ module.exports = {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
     },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ['G-B2G7YN9F96'],
+      },
+    },
   ],
 }
