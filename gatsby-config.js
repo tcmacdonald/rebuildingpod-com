@@ -40,6 +40,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
+    `gatsby-plugin-favicon`,
     { resolve: `gatsby-source-filesystem`, options: { path: `./src/assets/` } },
     {
       resolve: 'gatsby-source-contentful',
