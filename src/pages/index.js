@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
-import { Helmet } from 'react-helmet'
+import SEO from '../components/seo'
 import PersonAttributes from '../fragments/person_attributes'
 import Hero from '../components/hero'
 import Person from '../components/person'
@@ -34,7 +34,7 @@ class RootIndex extends React.Component {
     const people = get(this, 'props.data.allContentfulPerson.edges')
     return (
       <Layout location={this.props.location}>
-        <Helmet title={siteTitle} />
+        <SEO title={siteTitle} />
         <Hero />
         <div className="wrapper">
           <Container>
@@ -110,7 +110,6 @@ export const pageQuery = graphql`
           title
           slug
           publishDate(formatString: "MMMM Do, YYYY")
-          tags
           heroImage {
             fluid(maxWidth: 700) {
               ...GatsbyContentfulFluid

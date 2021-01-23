@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import { Helmet } from 'react-helmet'
+import SEO from '../components/seo'
 import get from 'lodash/get'
 import PersonAttributes from '../fragments/person_attributes'
 import Hero from '../components/hero'
@@ -13,7 +13,6 @@ import { Container, Row, Col, Visible, Hidden } from 'react-grid-system'
 
 class BlogPostTemplate extends React.Component {
   author(post) {
-    console.log(post)
     return (
       <div>
         <h2 className="section-headline">Author</h2>
@@ -21,13 +20,17 @@ class BlogPostTemplate extends React.Component {
       </div>
     )
   }
+
   render() {
     const post = get(this.props, 'data.contentfulBlogPost')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
 
     return (
       <Layout location={this.props.location}>
-        <Helmet title={`${post.title} | ${siteTitle}`} />
+        <SEO
+          title={`${post.title} | ${siteTitle}`}
+          image={post.ogImage.fixed.src}
+        />
         <Hero post={post} />
         <div className="wrapper">
           <Container>
@@ -36,9 +39,6 @@ class BlogPostTemplate extends React.Component {
                 <p>
                   <Img fluid={post.heroImage.fluid} />
                 </p>
-                <Hidden xs sm>
-                  {this.author(post)}
-                </Hidden>
               </Col>
               <Col>
                 <h1 className="section-headline">{post.title}</h1>
@@ -54,9 +54,6 @@ class BlogPostTemplate extends React.Component {
                     __html: post.body.childMarkdownRemark.html,
                   }}
                 />
-                <Visible xs sm>
-                  {this.author(post)}
-                </Visible>
               </Col>
             </Row>
           </Container>
@@ -84,6 +81,11 @@ export const pageQuery = graphql`
           ...GatsbyContentfulFluid
         }
       }
+      ogImage: heroImage {
+        fixed(width: 1200) {
+          src
+        }
+      }
       description {
         childMarkdownRemark {
           html
@@ -93,9 +95,6 @@ export const pageQuery = graphql`
         childMarkdownRemark {
           html
         }
-      }
-      author {
-        ...PersonAttributes
       }
     }
   }

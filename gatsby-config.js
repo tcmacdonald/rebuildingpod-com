@@ -26,6 +26,12 @@ if (!spaceId || !accessToken) {
 module.exports = {
   siteMetadata: {
     title: 'Rebuilding Podcast',
+    titleTemplate: '%s · Rebuilding Podcast',
+    description:
+      'Join a political satirist and strategist as we discuss hot topics ranging from politics to pop culture, from the perspective of two progressives living in the reddest of red states, Kentucky.',
+    url: 'https://www.rebuildingpod.com', // No trailing slash allowed!
+    image: '/images/rebuilding-og-logo.png', // Path to your image you placed in the 'static' folder
+    twitterUsername: '@rebuildingpod',
   },
   plugins: [
     'gatsby-plugin-sass',
