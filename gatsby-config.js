@@ -34,6 +34,7 @@ module.exports = {
     twitterUsername: '@rebuildingpod',
   },
   plugins: [
+    `gatsby-plugin-netlify`,
     'gatsby-plugin-sass',
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',

@@ -17,10 +17,19 @@ const SEO = ({ title, description, image, article }) => {
     twitterUsername,
   } = site.siteMetadata
 
+  let imgUrl
+
+  if (image) {
+    imgUrl =
+      image.substring(0, 2) == '//' ? `https:${image}` : `${siteUrl}${image}`
+  } else {
+    imgUrl = `${siteUrl}${defaultImage}`
+  }
+
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${image || defaultImage}`,
+    image: `${imgUrl}`,
     url: `${siteUrl}${pathname}`,
   }
 
